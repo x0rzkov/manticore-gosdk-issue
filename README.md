@@ -13,7 +13,11 @@ tar xvf manticore_papers.sql.tar.gz
 ### Run
 
 ```bash
-docker-compose up -d manticore
+$ docker-compose up -d manticore
+$ docker-compose exec manticore sh -c 'mysql -P9306'
+$ mysql> source /opt/data/manticore_papers.sql
+$ mysql> exit
+$ go run main.go --search lecun
 ```
 
 ## description

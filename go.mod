@@ -3,6 +3,7 @@ module github.com/x0rzkov/manticore-gosdk-issue
 go 1.14
 
 require (
+	github.com/gin-gonic/gin v1.6.3 // indirect
 	github.com/jinzhu/gorm v1.9.14 // indirect
 	github.com/k0kubun/pp v3.0.1+incompatible // indirect
 	github.com/manticoresoftware/go-sdk v0.0.0-20200702023334-7d072dcbb122 // indirect

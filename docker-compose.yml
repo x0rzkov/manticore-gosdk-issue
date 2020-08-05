@@ -1,13 +1,33 @@
-version: '3.7'
+---
+version: '3.8'
 services:
+
+  client:
+    container_name: client
+    image: manticore-gosdk-issue:latest
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+    - 8086:8086
+    volumes:
+    - ./data:/opt/manticore/data
+    links:
+    - manticore:manticore
+    depends_on:
+    - manticore
+    networks:
+    - internal
+    - web
+    restart: unless-stopped
+    command: ["/opt/manticore/manticore-gosdk-issue"]
 
   manticore:
     container_name: manticore
     image: manticoresearch/manticore:latest
     restart: unless-stopped
-    ports:
-    - 9307:9306
-    # - 9308:9308
+    networks:
+    - internal
     ulimits:
       nproc: 65535
       nofile:
@@ -18,7 +38,14 @@ services:
         hard: -1
     volumes:
     - ./manticore.conf:/etc/manticoresearch/manticore.conf
+    - ./data:/opt/data
     - mt-data:/var/lib/manticore
+
+networks:
+  internal:
+    driver: bridge
+  web:
+    external: true
 
 volumes:
   mt-data:
