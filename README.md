@@ -17,7 +17,8 @@ $ docker-compose up -d manticore
 $ docker-compose exec manticore sh -c 'mysql -P9306'
 $ mysql> source /opt/data/manticore_papers.sql
 $ mysql> exit
-$ go run main.go --search lecun
+$ docker-compose up -d
+$ open http://[YOUR_PUBLIC_IP]:8086/search/l
 ```
 
 ## description
