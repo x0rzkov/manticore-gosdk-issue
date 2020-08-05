@@ -7,6 +7,7 @@
 ### Installation
 
 ```bash
+cd ./data
 tar xvf manticore_papers.sql.tar.gz
 ```
 
