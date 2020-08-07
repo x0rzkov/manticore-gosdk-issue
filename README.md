@@ -19,8 +19,26 @@ $ docker-compose exec manticore sh -c 'mysql -P9306'
 $ mysql> source /opt/data/manticore_papers.sql
 $ mysql> exit
 $ docker-compose up -d
+```
+
+#### First bug: slice bounds out of range...
+```
 $ open http://[YOUR_PUBLIC_IP]:8086/search/l
 ```
+
+#### Second bug: Sphinxql: failed to read searchd response
+```
+$ go run main.go
+$ open http://[YOUR_PUBLIC_IP]:8086/rss/?f_frameworks=1
+$ # it works
+```
+
+```
+docker-compose up 
+$ open http://[YOUR_PUBLIC_IP]:8086/rss/?f_frameworks=1
+$ # does not work
+```
+
 
 ## description
 ```bash
